@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memories & Stitches of Time | A Gift for My Best Friend</title>
+    <!-- Google Fonts for Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Cinzel:wght@500;700;900&family=Great+Vibes&family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Particle Canvas Background -->
+    <canvas id="particleCanvas"></canvas>
+
+    <!-- Header Navigation & Controls -->
+    <header class="navbar">
+        <div class="logo">
+            <i class="fa-solid fa-book-bookmark"></i>
+            <span>The Artist's Sketchbook</span>
+        </div>
+        <div class="nav-actions">
+            <button id="musicToggleBtn" class="action-btn" title="Toggle Ambient Music">
+                <i class="fa-solid fa-music"></i>
+                <span id="musicText">Play Music</span>
+            </button>
+            <button id="toggleViewBtn" class="action-btn outline" title="Switch View Mode">
+                <i class="fa-solid fa-border-all"></i>
+                <span>Gallery View</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main-container">
+
+        <!-- HERO SECTION: ARTIST STUDIO BACK-VIEW VISUAL -->
+        <section class="hero-studio" id="heroSection">
+            <div class="studio-card">
+                <div class="studio-image-wrapper">
+                    <img src="hero_artist.jpg" alt="Artist sketching portrait from behind view" class="hero-img">
+                    <div class="sketch-badge">
+                        <i class="fa-solid fa-pencil-line"></i>
+                        <span>Captured from behind: Sketching your beauty</span>
+                    </div>
+                </div>
+                <div class="hero-content">
+                    <span class="subtitle-tag">A Special Gift for My Best Friend</span>
+                    <h1 class="main-title">Every Sketch Holds a Memory, Every Memory Holds You</h1>
+                    <p class="hero-desc">
+                        Step inside this interactive 3D Photo Book. Turn the pages to explore your smiles, hair, eyes, and grace—wrapped in heartwarming English quotes and soulful Shayari.
+                    </p>
+
+                    <!-- SKETCH TO PHOTO REVEAL WIDGET -->
+                    <div class="interactive-sketch-box">
+                        <h3><i class="fa-solid fa-wand-magic-sparkles"></i> Interactive Sketch-to-Photo Magic</h3>
+                        <p>Drag the slider to see how charcoal outlines come alive into your smile!</p>
+                        <div class="comparison-container" id="sketchComparison">
+                            <img src="WhatsApp Image 2026-09-21 at 1.00.02 PM.jpeg" alt="Real Photo" class="img-real">
+                            <div class="img-sketch-overlay" id="sketchOverlay">
+                                <img src="WhatsApp Image 2026-09-21 at 1.00.02 PM.jpeg" alt="Sketch Overlay" class="img-sketch">
+                            </div>
+                            <input type="range" min="0" max="100" value="50" class="slider" id="sketchSlider">
+                            <div class="slider-button" id="sliderBtn">
+                                <i class="fa-solid fa-arrows-left-right"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="hero-btn-group">
+                        <button class="btn-primary" id="openBookBtn">
+                            <i class="fa-solid fa-book-open"></i> Open 3D Photo Book
+                        </button>
+                        <button class="btn-secondary" id="scrollGalleryBtn">
+                            <i class="fa-solid fa-images"></i> Explore Memories
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3D PHOTO BOOK SECTION -->
+        <section class="book-section" id="bookSection">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-heart"></i> The 3D Memory Album</h2>
+                <p>Use arrows, buttons, or page corners to flip through pages</p>
+            </div>
+
+            <!-- BOOK CONTROLS -->
+            <div class="book-controls">
+                <button id="prevPageBtn" class="nav-arrow-btn" title="Previous Page">
+                    <i class="fa-solid fa-chevron-left"></i> Previous
+                </button>
+                <div class="page-indicator">
+                    <span id="currentPageNum">Spread 1</span> / <span id="totalPagesNum">6 Spreads</span>
+                </div>
+                <button id="nextPageBtn" class="nav-arrow-btn" title="Next Page">
+                    Next <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <!-- THE 3D BOOK CONTAINER -->
+            <div class="book-wrapper">
+                <div class="book-3d" id="book3d">
+                    
+                    <!-- SPREAD 1: EYES & MYSTERY (Aankhen & Nazar) -->
+                    <div class="page-spread active" data-spread="1">
+                        <div class="page page-left">
+                            <div class="page-number">Page 1</div>
+                            <div class="theme-badge">Spread I • Eyes & Mystery</div>
+                            <h3 class="spread-title">The Spell of Your Eyes</h3>
+                            
+                            <div class="photo-grid grid-2">
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.02 PM.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.02 PM.jpeg" alt="Best friend photo 1">
+                                    <div class="polaroid-caption">Galaxies in your eyes ✨</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.04 PM.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.04 PM.jpeg" alt="Best friend photo 2">
+                                    <div class="polaroid-caption">A gaze that stops time ⏳</div>
+                                </div>
+                            </div>
+
+                            <div class="quote-card english-quote">
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+                                <p>"Your eyes hold a thousand starlight memories that make the universe look simple."</p>
+                            </div>
+                        </div>
+
+                        <div class="page page-right">
+                            <div class="page-number">Page 2</div>
+                            
+                            <div class="photo-grid single-large">
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.07 PM.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.07 PM.jpeg" alt="Best friend photo 3">
+                                    <div class="polaroid-caption">Softness & Depth 💖</div>
+                                </div>
+                            </div>
+
+                            <div class="shayari-container">
+                                <div class="shayari-card">
+                                    <div class="shayari-badge"><i class="fa-solid fa-feather-pointed"></i> Tareef Shayari • Eyes</div>
+                                    <div class="hindi-text">
+                                        Teri aankhon ka jaadu ajab asar rakhta hai,<br>
+                                        Dekh lein jo ek baar, dil udhar hi thehar jaata hai.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"Your eyes carry a magical charm; one glance and the heart loses its way to stay with you forever."</em>
+                                    </div>
+                                </div>
+
+                                <div class="shayari-card secondary">
+                                    <div class="hindi-text">
+                                        Teri aankhon mein jo sukoon basta hai,<br>
+                                        Wo duniya ke kisi bhi shehar mein nahi milta.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"The tranquility found in your eyes is nowhere else to be found in this world."</em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 2: HAIR & SIMPLICITY (Teri Zulfen) -->
+                    <div class="page-spread" data-spread="2">
+                        <div class="page page-left">
+                            <div class="page-number">Page 3</div>
+                            <div class="theme-badge">Spread II • Grace & Hair</div>
+                            <h3 class="spread-title">Cascading Waves of Grace</h3>
+
+                            <div class="photo-grid grid-2">
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.08 PM.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.08 PM.jpeg" alt="Best friend photo 4">
+                                    <div class="polaroid-caption">Soft breeze & silk hair 🌿</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.09 PM.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.09 PM.jpeg" alt="Best friend photo 5">
+                                    <div class="polaroid-caption">Effortless Elegance 🌸</div>
+                                </div>
+                            </div>
+
+                            <div class="quote-card english-quote">
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+                                <p>"In every wave of your hair lies a soft melody of grace and timeless simplicity."</p>
+                            </div>
+                        </div>
+
+                        <div class="page page-right">
+                            <div class="page-number">Page 4</div>
+
+                            <div class="photo-grid single-large">
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.10 PM.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.10 PM.jpeg" alt="Best friend photo 6">
+                                    <div class="polaroid-caption">Simplicity at its best ✨</div>
+                                </div>
+                            </div>
+
+                            <div class="shayari-container">
+                                <div class="shayari-card">
+                                    <div class="shayari-badge"><i class="fa-solid fa-wind"></i> Tareef Shayari • Zulfen</div>
+                                    <div class="hindi-text">
+                                        Bikharati hain jab teri zulfen chehre par,<br>
+                                        Lagta hai jaise shaam ne odh li ho chaadar.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"When your hair cascades across your face, it feels like evening wrapping the sky in velvet."</em>
+                                    </div>
+                                </div>
+
+                                <div class="shayari-card secondary">
+                                    <div class="hindi-text">
+                                        Teri zulfon ki chhaon mein sukoon milta hai,<br>
+                                        Teri saadgi dekh kar dil phool sa khilta hai.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"In the shade of your hair lies peace; seeing your simplicity makes the heart bloom like a blossom."</em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 3: THE RADIANT SMILE (Muskurahat) -->
+                    <div class="page-spread" data-spread="3">
+                        <div class="page page-left">
+                            <div class="page-number">Page 5</div>
+                            <div class="theme-badge">Spread III • Smile & Joy</div>
+                            <h3 class="spread-title">The Sunshine of Your Smile</h3>
+
+                            <div class="photo-grid grid-2">
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.12 PM.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.12 PM.jpeg" alt="Best friend photo 7">
+                                    <div class="polaroid-caption">Bright like the morning sun ☀️</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.13 PM.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.13 PM.jpeg" alt="Best friend photo 8">
+                                    <div class="polaroid-caption">Laughter that cures everything 💛</div>
+                                </div>
+                            </div>
+
+                            <div class="quote-card english-quote">
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+                                <p>"Your smile is the purest form of sunshine, turning ordinary days into golden memories."</p>
+                            </div>
+                        </div>
+
+                        <div class="page page-right">
+                            <div class="page-number">Page 6</div>
+
+                            <div class="photo-grid single-large">
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.14 PM.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.14 PM.jpeg" alt="Best friend photo 9">
+                                    <div class="polaroid-caption">Pure happiness captured 🎈</div>
+                                </div>
+                            </div>
+
+                            <div class="shayari-container">
+                                <div class="shayari-card">
+                                    <div class="shayari-badge"><i class="fa-solid fa-face-smile-beam"></i> Tareef Shayari • Muskurahat</div>
+                                    <div class="hindi-text">
+                                        Jab se aapne humein muskurakar dekha,<br>
+                                        Tab se ye dil aapki hansi ka deewana ho gaya.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"Ever since you looked with that gentle smile, this heart became captive to your laughter."</em>
+                                    </div>
+                                </div>
+
+                                <div class="shayari-card secondary">
+                                    <div class="hindi-text">
+                                        Teri hansi mein hai jaise sangeet ka sur,<br>
+                                        Tere paas aane se door ho jaata har gham door.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"Your laughter is like a soothing musical note, gently dissolving every sorrow away."</em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 4: ETHEREAL BEAUTY & ELEGANCE (Tareef-e-Husn) -->
+                    <div class="page-spread" data-spread="4">
+                        <div class="page page-left">
+                            <div class="page-number">Page 7</div>
+                            <div class="theme-badge">Spread IV • Beauty & Charm</div>
+                            <h3 class="spread-title">Unmatched Elegance</h3>
+
+                            <div class="photo-grid grid-2">
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.14 PMwef.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.14 PMwef.jpeg" alt="Best friend photo 10">
+                                    <div class="polaroid-caption">Regal & Elegant 👑</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="WhatsApp Image 2026-09-21 at 1.00.15 PMwef.jpeg">
+                                    <img src="WhatsApp Image 2026-09-21 at 1.00.15 PMwef.jpeg" alt="Best friend photo 11">
+                                    <div class="polaroid-caption">Timeless portrait 🌺</div>
+                                </div>
+                            </div>
+
+                            <div class="quote-card english-quote">
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+                                <p>"Elegance isn't about getting noticed; it's about being unforgettable in every heart."</p>
+                            </div>
+                        </div>
+
+                        <div class="page page-right">
+                            <div class="page-number">Page 8</div>
+
+                            <div class="photo-grid grid-2">
+                                <div class="polaroid-frame" data-src="ee.jpeg">
+                                    <img src="ee.jpeg" alt="Best friend photo 12">
+                                    <div class="polaroid-caption">Cute & Charming ✨</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="ef.jpeg">
+                                    <img src="ef.jpeg" alt="Best friend photo 13">
+                                    <div class="polaroid-caption">Grace personified 💫</div>
+                                </div>
+                            </div>
+
+                            <div class="shayari-container">
+                                <div class="shayari-card">
+                                    <div class="shayari-badge"><i class="fa-solid fa-gem"></i> Tareef Shayari • Husn</div>
+                                    <div class="hindi-text">
+                                        Aapki khubsurati ki kya tareef karoon,<br>
+                                        Aapko chaand bhi dekhe to wo bhi sharma jaye.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"How do I praise your beauty? Even the moon blushes when it gazes upon you."</em>
+                                    </div>
+                                </div>
+
+                                <div class="shayari-card secondary">
+                                    <div class="hindi-text">
+                                        Tujhko aaine ki nahi, balki aaine ko teri zaroorat hai,<br>
+                                        Kyunki khubsurati ki asal misaal teri soorat hai.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"You don't need a mirror; the mirror needs you to define true grace and beauty."</em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 5: JOY & MAGIC MOMENTS -->
+                    <div class="page-spread" data-spread="5">
+                        <div class="page page-left">
+                            <div class="page-number">Page 9</div>
+                            <div class="theme-badge">Spread V • Precious Memories</div>
+                            <h3 class="spread-title">Unforgettable Moments</h3>
+
+                            <div class="photo-grid grid-2">
+                                <div class="polaroid-frame" data-src="efwe.jpeg">
+                                    <img src="efwe.jpeg" alt="Best friend photo 14">
+                                    <div class="polaroid-caption">Unfiltered Happiness 😄</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="efwef.jpeg">
+                                    <img src="efwef.jpeg" alt="Best friend photo 15">
+                                    <div class="polaroid-caption">Golden Vibes ✨</div>
+                                </div>
+                            </div>
+
+                            <div class="quote-card english-quote">
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+                                <p>"Side by side or miles apart, best friends are connected by the heart forever."</p>
+                            </div>
+                        </div>
+
+                        <div class="page page-right">
+                            <div class="page-number">Page 10</div>
+
+                            <div class="photo-grid grid-2">
+                                <div class="polaroid-frame" data-src="eref.jpeg">
+                                    <img src="eref.jpeg" alt="Best friend photo 16">
+                                    <div class="polaroid-caption">Silly & Sweet 🍭</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="fwe.jpeg">
+                                    <img src="fwe.jpeg" alt="Best friend photo 17">
+                                    <div class="polaroid-caption">Best moments with you 🎨</div>
+                                </div>
+                            </div>
+
+                            <div class="shayari-container">
+                                <div class="shayari-card">
+                                    <div class="shayari-badge"><i class="fa-solid fa-sparkles"></i> Tareef Shayari • Simplicity</div>
+                                    <div class="hindi-text">
+                                        Teri sadagi hi teri sabse badi ada hai,<br>
+                                        Tu mere zindagi ki sabse haseen duaa hai.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"Your simplicity is your greatest charm; you are the sweetest prayer answered in my life."</em>
+                                    </div>
+                                </div>
+
+                                <div class="shayari-card secondary">
+                                    <div class="hindi-text">
+                                        Kajraare naina aur innocent smile,<br>
+                                        Tere jaisa best friend nahi dekha miles and miles.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"Expressive eyes and an innocent smile—no best friend compares to you for miles around."</em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SPREAD 6: FOREVER BOND & PERSONAL LETTER -->
+                    <div class="page-spread" data-spread="6">
+                        <div class="page page-left">
+                            <div class="page-number">Page 11</div>
+                            <div class="theme-badge">Spread VI • Eternal Friendship</div>
+                            <h3 class="spread-title">Forever & Always</h3>
+
+                            <div class="photo-grid grid-2">
+                                <div class="polaroid-frame" data-src="sef.jpeg">
+                                    <img src="sef.jpeg" alt="Best friend photo 18">
+                                    <div class="polaroid-caption">Pure Joy 🌟</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="sf.jpeg">
+                                    <img src="sf.jpeg" alt="Best friend photo 19">
+                                    <div class="polaroid-caption">Bestie for life 💖</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="wefwf.jpeg">
+                                    <img src="wefwf.jpeg" alt="Best friend photo 20">
+                                    <div class="polaroid-caption">Cherished memory 📸</div>
+                                </div>
+                                <div class="polaroid-frame" data-src="werwf.jpeg">
+                                    <img src="werwf.jpeg" alt="Best friend photo 21">
+                                    <div class="polaroid-caption">Always shining 🌠</div>
+                                </div>
+                            </div>
+
+                            <div class="quote-card english-quote">
+                                <i class="fa-solid fa-quote-left quote-icon"></i>
+                                <p>"A true friendship is a masterpiece painted with love, trust, and timeless memories."</p>
+                            </div>
+                        </div>
+
+                        <div class="page page-right special-dedication">
+                            <div class="page-number">Page 12</div>
+                            
+                            <div class="letter-card">
+                                <div class="letter-header">
+                                    <i class="fa-solid fa-envelope-open-text"></i>
+                                    <h4>A Personal Letter for You</h4>
+                                </div>
+                                <div class="letter-body" contenteditable="true" id="customLetterText">
+                                    Dearest Bestie,<br><br>
+                                    Thank you for being the most amazing, joyful, and beautiful soul in my life. Every picture here represents a memory that I treasure close to my heart. Your smile lights up every room, your grace inspires everyone around you, and your friendship is the greatest gift of all.<br><br>
+                                    Keep shining, keep laughing, and never forget how truly special you are!<br><br>
+                                    Forever your best friend ❤️
+                                </div>
+                                <div class="letter-footer">
+                                    <span class="click-edit-hint"><i class="fa-solid fa-pencil"></i> Click text to customize letter</span>
+                                    <button class="btn-sm" id="saveLetterBtn"><i class="fa-solid fa-check"></i> Save Letter</button>
+                                </div>
+                            </div>
+
+                            <div class="shayari-container">
+                                <div class="shayari-card highlight">
+                                    <div class="shayari-badge"><i class="fa-solid fa-infinity"></i> Eternal Bond Shayari</div>
+                                    <div class="hindi-text">
+                                        Tere saath bitaya har pal ek haseen khwab hai,<br>
+                                        Teri dosti meri zindagi ka sabse lajawab jawab hai.
+                                    </div>
+                                    <div class="translation-text">
+                                        <em>"Every moment spent with you is a beautiful dream; your friendship is life's most wonderful answer."</em>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- GRID GALLERY VIEW SECTION (FOR EASY SCROLLING) -->
+        <section class="gallery-section hidden" id="gallerySection">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-images"></i> Full Photo & Poetry Gallery</h2>
+                <p>Click any photo to zoom in high resolution</p>
+            </div>
+            <div class="masonry-grid" id="masonryGrid">
+                <!-- Javascript will dynamically inject all 21 photos here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- LIGHTBOX MODAL FOR HIGH RES PHOTO VIEW -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div class="lightbox-content">
+            <div class="lightbox-img-wrapper">
+                <img src="" id="lightboxImg" alt="Enlarged photo">
+            </div>
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle">Memory Frame</h3>
+                <p id="lightboxDesc">Click anywhere outside to close this viewer.</p>
+                <div class="lightbox-actions">
+                    <a href="" id="downloadPhotoBtn" download class="btn-sm action-link">
+                        <i class="fa-solid fa-download"></i> Download Photo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <p>Crafted with ❤️ as a Special Gift for My Best Friend • 3D Sketchbook Experience</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
